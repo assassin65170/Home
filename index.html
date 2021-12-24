@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Home</title>
+    <style>
+      body { margin: 0; }
+    </style>
+    <script src="js/3D.js"></script>
   </head>
 
   <body>
@@ -19,9 +23,36 @@
       </ul>
     </div>
 
-    <img class="w3-circle" src="images/unnamed.png" alt="image" >
+    <img class="w3-circle" src="images/unnamed.png" alt="image">
 
-    <footer class="container-fluid text-center" style="text-align: center;padding-top: 180px;">
+        <script>
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.body.appendChild( renderer.domElement );
+
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+      const cube = new THREE.Mesh( geometry, material );
+      scene.add( cube );
+
+      camera.position.z = 5;
+
+      const animate = function () {
+        requestAnimationFrame( animate );
+
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        renderer.render( scene, camera );
+      };
+
+      animate();
+    </script>
+
+    <footer class="container-fluid text-center" style="text-align: center;padding-top: 5px;color: white;background-color:rgb(0, 0, 0);">
   </a>
     <p>Copyright Assassin 2021 &copy;</p>
     <a href="https://twitter.com/Assassi83762414" style="font-size:24px" class="fa" target="_blank">&#xf099;</a>
@@ -29,5 +60,7 @@
     <a href="https://www.youtube.com/channel/UCoBjO3ZylyR9igXujRzQDJw" style="font-size:24px" class="fa" target="_blank">&#xf16a;</a>
     <a href="https://github.com/assassin65170" style="font-size:24px" class="fa" target="_blank">&#xf09b;</a>  
 </footer>
+
   </body>
+
 </html>
